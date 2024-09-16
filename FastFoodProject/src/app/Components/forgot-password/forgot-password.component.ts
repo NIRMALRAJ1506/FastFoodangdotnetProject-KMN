@@ -43,10 +43,10 @@ export class ForgotPasswordComponent {
     this.errorMessage = ''; // Clear previous error messages
 
     axios
-      .post('http://localhost:5270/api/user/verifyemail', { email }) // Ensure correct API endpoint
+      .post('http://localhost:5270/api/user/forgot-password', { email }) // Updated to correct API endpoint
       .then((response) => {
         this.isLoading = false;
-        if (response.data.emailExists) {
+        if (response.status === 200) {
           this.isEmailVerified = true;
           this.isInvalidEmail = false;
         } else {
@@ -74,10 +74,10 @@ export class ForgotPasswordComponent {
     this.errorMessage = ''; // Clear previous error messages
 
     axios
-      .post('http://localhost:5270/api/user/changepassword', { email, newPassword }) // Ensure correct API endpoint
+      .post('http://localhost:5270/api/user/reset-password', { email, newPassword }) // Updated to correct API endpoint
       .then((response) => {
         this.isLoading = false;
-        if (response.data.success) {
+        if (response.status === 200) {
           this.passwordResetSuccess = true;
           this.isEmailVerified = false; // Reset the form state after successful password reset
         }

@@ -23,8 +23,6 @@
   {{ notification.message }}
 </div>
 
-
-
 <div class="mar">
   <div class="manage-items-container">
     <!-- Navigation bar for food types -->
@@ -47,34 +45,53 @@
       <button class="add-button" (click)="toggleAddItemForm()">Add New Item</button>
 
       <!-- Add/Edit Item Form -->
-      <form *ngIf="showAddItemForm" class="item-form" (ngSubmit)="addOrUpdateItem()">
+      <form [formGroup]="itemForm" *ngIf="showAddItemForm" class="item-form" (ngSubmit)="addOrUpdateItem()">
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" [(ngModel)]="newItem.name" name="name" required />
+          <input type="text" id="name" formControlName="name" />
+          <div class="alert alert-danger" *ngIf="itemForm.get('name')?.invalid && (itemForm.get('name')?.touched || itemForm.get('name')?.dirty)">
+            <small *ngIf="itemForm.get('name')?.errors?.['required']">Name is required.</small>
+            <small *ngIf="itemForm.get('name')?.errors?.['minlength']">Name must be at least 3 characters long.</small>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="description">Description</label>
-          <textarea id="description" [(ngModel)]="newItem.description" name="description" required></textarea>
+          <textarea id="description" formControlName="description"></textarea>
+          <div class="alert alert-danger" *ngIf="itemForm.get('description')?.invalid && (itemForm.get('description')?.touched || itemForm.get('description')?.dirty)">
+            <small *ngIf="itemForm.get('description')?.errors?.['required']">Description is required.</small>
+            <small *ngIf="itemForm.get('description')?.errors?.['minlength']">Description must be at least 10 characters long.</small>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="price">Price</label>
-          <input type="number" id="price" [(ngModel)]="newItem.price" name="price" required />
+          <input type="number" id="price" formControlName="price" />
+          <div class="alert alert-danger" *ngIf="itemForm.get('price')?.invalid && (itemForm.get('price')?.touched || itemForm.get('price')?.dirty)">
+            <small *ngIf="itemForm.get('price')?.errors?.['required']">Price is required.</small>
+            <small *ngIf="itemForm.get('price')?.errors?.['min']">Price must be greater than 0.</small>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="imgUrl">Image URL</label>
-          <input type="text" id="imgUrl" [(ngModel)]="newItem.imgUrl" name="imgUrl" required />
+          <input type="text" id="imgUrl" formControlName="imgUrl" />
+          <div class="alert alert-danger" *ngIf="itemForm.get('imgUrl')?.invalid && (itemForm.get('imgUrl')?.touched || itemForm.get('imgUrl')?.dirty)">
+            <small *ngIf="itemForm.get('imgUrl')?.errors?.['required']">Image URL is required.</small>
+            <small *ngIf="itemForm.get('imgUrl')?.errors?.['pattern']">Invalid URL format.</small>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="foodType">Food Type</label>
-          <input type="text" id="foodType" [(ngModel)]="newItem.foodType" name="foodType" required />
+          <input type="text" id="foodType" formControlName="foodType" />
+          <div class="alert alert-danger" *ngIf="itemForm.get('foodType')?.invalid && (itemForm.get('foodType')?.touched || itemForm.get('foodType')?.dirty)">
+            <small *ngIf="itemForm.get('foodType')?.errors?.['required']">Food Type is required.</small>
+          </div>
         </div>
 
         <div class="form-group">
-          <button type="submit" class="save-button">{{ editingItem ? 'Update Item' : 'Add Item' }}</button>
+          <button type="submit" class="save-button" [disabled]="itemForm.invalid">{{ editingItem ? 'Update Item' : 'Add Item' }}</button>
           <button type="button" class="cancel-button" (click)="toggleAddItemForm()">Cancel</button>
         </div>
       </form>
@@ -98,6 +115,8 @@
     </div>
   </div>
 </div>
+
+<!-- Logout Modal -->
 <div class="modal" *ngIf="showLogoutModal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -115,6 +134,7 @@
   </div>
 </div>
 
+<!-- Delete Confirmation Modal -->
 <div class="modal" *ngIf="showDeleteConfirmation">
   <div class="modal-dialog">
     <div class="modal-content">

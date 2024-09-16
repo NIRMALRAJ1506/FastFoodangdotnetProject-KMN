@@ -1,4 +1,5 @@
 ﻿using FastFoodApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
@@ -62,7 +63,7 @@ namespace FastFoodApi.Controllers
 
             return Ok(new { message = "Admin login successful", token, userId = admin.Id });
         }
-
+        [AllowAnonymous]
         [HttpPost("forgot-password")]
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordModel model)
         {
@@ -81,7 +82,7 @@ namespace FastFoodApi.Controllers
 
             return Ok(new { message = "Password reset link has been sent to your email." });
         }
-
+        [AllowAnonymous]
         [HttpPost("reset-password")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordModel model)
         {

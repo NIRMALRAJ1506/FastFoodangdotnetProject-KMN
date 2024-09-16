@@ -2,8 +2,12 @@
 .mar {
   background: url('/assets/images/background.jpg') no-repeat center center fixed;
   background-size: cover;
-  height: 100vh;
+  min-height: calc(100vh - 140px); /* Adjust for navbar and footer */
   padding: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* Page Heading */
@@ -17,13 +21,11 @@
 .login-container {
   width: 100%;
   max-width: 400px;
-  margin: auto;
   background: #000;
   color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  position: relative;
   background-color: rgba(24, 16, 16, 0.4);
 }
 

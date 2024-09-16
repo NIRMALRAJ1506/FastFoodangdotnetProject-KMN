@@ -164,6 +164,29 @@ namespace FastFoodApi.Controllers
 
 
 
-        // Add additional methods (e.g., for updating, deleting orders) if needed
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteOrder(int id)
+        {
+            var order = await _context.Orders
+                .Include(o => o.OrderItems) // Include related OrderItems
+                .ThenInclude(oi => oi.FoodItem) // Include related FoodItems
+                .FirstOrDefaultAsync(o => o.Id == id);
+
+            if (order == null)
+            {
+                return NotFound(); // Return 404 if order not found
+            }
+
+            // Remove related OrderItems first
+            _context.OrderItems.RemoveRange(order.OrderItems);
+
+            // Remove the order itself
+            _context.Orders.Remove(order);
+
+            await _context.SaveChangesAsync(); // Save changes to the database
+
+            return NoContent(); // Return 204 No Content on successful deletion
+        }
+
     }
 }

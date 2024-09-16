@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "FastFoodApi.Controllers.AdminController",
+    "Method": "ForgotPassword",
+    "RelativePath": "api/Admin/forgot-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "FastFoodApi.Models.ForgotPasswordModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FastFoodApi.Controllers.AdminController",
     "Method": "Login",
     "RelativePath": "api/Admin/login",
     "HttpMethod": "POST",
@@ -26,6 +42,22 @@
       {
         "Name": "model",
         "Type": "FastFoodApi.Models.RegisterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FastFoodApi.Controllers.AdminController",
+    "Method": "ResetPassword",
+    "RelativePath": "api/Admin/reset-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "FastFoodApi.Models.ResetPasswordModel",
         "IsRequired": true
       }
     ],
@@ -435,6 +467,22 @@
   },
   {
     "ContainingType": "FastFoodApi.Controllers.UserController",
+    "Method": "ForgotPassword",
+    "RelativePath": "api/User/forgot-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "FastFoodApi.Models.ForgotPasswordModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FastFoodApi.Controllers.UserController",
     "Method": "Login",
     "RelativePath": "api/User/login",
     "HttpMethod": "POST",
@@ -460,6 +508,22 @@
       {
         "Name": "model",
         "Type": "FastFoodApi.Models.RegisterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FastFoodApi.Controllers.UserController",
+    "Method": "ResetPassword",
+    "RelativePath": "api/User/reset-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "FastFoodApi.Models.ResetPasswordModel",
         "IsRequired": true
       }
     ],

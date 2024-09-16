@@ -13,7 +13,12 @@
         name="cardNumber"
         pattern="[0-9]{16}"
         placeholder="Enter 16-digit card number"
+        #cardNumber="ngModel"
       />
+      <div *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)" class="text-danger">
+        <div *ngIf="cardNumber.errors?.['required']">Card number is required.</div>
+        <div *ngIf="cardNumber.errors?.['pattern']">Card number must be 16 digits.</div>
+      </div>
     </div>
 
     <div class="form-group">
@@ -26,7 +31,12 @@
         [(ngModel)]="paymentDetails.expiryDate"
         name="expiryDate"
         placeholder="MM/YY"
+        #expiryDate="ngModel"
       />
+      <div *ngIf="expiryDate.invalid && (expiryDate.dirty || expiryDate.touched)" class="text-danger">
+        <div *ngIf="expiryDate.errors?.['required']">Expiry date is required.</div>
+        <div *ngIf="expiryDate.errors?.['pattern']">Expiry date must be in MM/YY format.</div>
+      </div>
     </div>
 
     <div class="form-group">
@@ -40,29 +50,18 @@
         name="cvv"
         pattern="[0-9]{3}"
         placeholder="Enter 3-digit CVV"
+        #cvv="ngModel"
       />
+      <div *ngIf="cvv.invalid && (cvv.dirty || cvv.touched)" class="text-danger">
+        <div *ngIf="cvv.errors?.['required']">CVV is required.</div>
+        <div *ngIf="cvv.errors?.['pattern']">CVV must be 3 digits.</div>
+      </div>
     </div>
 
     <button (click)="payNow()" [disabled]="isProcessing" class="btn btn-primary">
       Pay Now
     </button>
     
-
     <button type="button" class="btn btn-secondary" (click)="cancelPayment()">Cancel</button>
   </form>
 </div>
-
-<!-- Modal for payment success -->
-<!-- <ng-template #paymentModal let-modal>
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body text-center">
-        <img src="assets/images/success-tick.png" alt="Success" width="100" height="100" />
-        <h3>Payment Successful</h3>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" (click)="modal.close()">OK</button>
-      </div>
-    </div>
-  </div>
-</ng-template> -->

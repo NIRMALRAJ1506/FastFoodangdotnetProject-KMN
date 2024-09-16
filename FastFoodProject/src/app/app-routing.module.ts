@@ -20,6 +20,7 @@ import { FeedbacksComponent } from './Components/feedbacks/feedbacks.component';
 import { AuthGuard } from './shared/auth.guard';
 import { MenuComponent } from './Components/menu/menu.component';
 import { PaymentComponent } from './Components/payment/payment.component';
+import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 
 const routes: Routes = [ 
   {path:"",component:HomeComponent},
@@ -43,7 +44,9 @@ const routes: Routes = [
 {path:'feedbacks',component:FeedbacksComponent,canActivate:[AuthGuard]},
 {path:'menu',component:MenuComponent},
 {path:'payment',component:PaymentComponent},
-{ path: '**', redirectTo: 'login', pathMatch: 'full' }
+{path:'forgotpassword',component:ForgotPasswordComponent},
+{ path: '**', redirectTo: 'login', pathMatch: 'full' },
+
 
 ];
 

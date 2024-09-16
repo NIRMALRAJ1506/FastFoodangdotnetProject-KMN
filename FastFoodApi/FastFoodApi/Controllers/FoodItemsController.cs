@@ -58,17 +58,23 @@ namespace FastFoodApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateFoodItem(int id, [FromBody] FoodItem updatedFoodItem)
         {
+            // Log incoming data for debugging
+            Console.WriteLine($"Received ID: {id}");
+            Console.WriteLine($"Received FoodItem ID: {updatedFoodItem.Id}");
+
+            // Check if the ID in the URL matches the ID in the body
             if (id != updatedFoodItem.Id)
             {
-                return BadRequest("FoodItem ID mismatch.");
+                return BadRequest($"ID mismatch: URL ID ({id}) does not match Body ID ({updatedFoodItem.Id}).");
             }
 
             var foodItem = await _context.FoodItems.FindAsync(id);
             if (foodItem == null)
             {
-                return NotFound("FoodItem not found.");
+                return NotFound($"FoodItem with ID {id} not found.");
             }
 
+            // Update food item properties
             foodItem.Name = updatedFoodItem.Name;
             foodItem.Description = updatedFoodItem.Description;
             foodItem.Price = updatedFoodItem.Price;
@@ -84,13 +90,14 @@ namespace FastFoodApi.Controllers
             {
                 if (!_context.FoodItems.Any(e => e.Id == id))
                 {
-                    return NotFound("FoodItem not found.");
+                    return NotFound($"FoodItem with ID {id} not found during update.");
                 }
                 throw;
             }
 
-            return NoContent();
+            return Ok(foodItem);
         }
+
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteFoodItem(int id)
