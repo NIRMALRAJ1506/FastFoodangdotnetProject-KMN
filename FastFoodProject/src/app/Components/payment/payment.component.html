@@ -1,0 +1,68 @@
+<div class="payment-container">
+  <h2>Enter Payment Details</h2>
+
+  <form (ngSubmit)="payNow()" #paymentForm="ngForm">
+    <div class="form-group">
+      <label for="cardNumber">Card Number</label>
+      <input
+        type="text"
+        id="cardNumber"
+        class="form-control"
+        required
+        [(ngModel)]="paymentDetails.cardNumber"
+        name="cardNumber"
+        pattern="[0-9]{16}"
+        placeholder="Enter 16-digit card number"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="expiryDate">Expiry Date</label>
+      <input
+        type="text"
+        id="expiryDate"
+        class="form-control"
+        required
+        [(ngModel)]="paymentDetails.expiryDate"
+        name="expiryDate"
+        placeholder="MM/YY"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="cvv">CVV</label>
+      <input
+        type="text"
+        id="cvv"
+        class="form-control"
+        required
+        [(ngModel)]="paymentDetails.cvv"
+        name="cvv"
+        pattern="[0-9]{3}"
+        placeholder="Enter 3-digit CVV"
+      />
+    </div>
+
+    <button (click)="payNow()" [disabled]="isProcessing" class="btn btn-primary">
+      Pay Now
+    </button>
+    
+
+    <button type="button" class="btn btn-secondary" (click)="cancelPayment()">Cancel</button>
+  </form>
+</div>
+
+<!-- Modal for payment success -->
+<!-- <ng-template #paymentModal let-modal>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <img src="assets/images/success-tick.png" alt="Success" width="100" height="100" />
+        <h3>Payment Successful</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="modal.close()">OK</button>
+      </div>
+    </div>
+  </div>
+</ng-template> -->

@@ -1,0 +1,194 @@
+/* Ensure the background image covers the entire page */
+.mar {
+  background: url('/assets/images/background.jpg') center center no-repeat;
+  background-size: cover; /* Cover the entire container */
+  min-height: 100vh; /* Ensure it covers at least the viewport height */
+  background-attachment: fixed; /* Keep background fixed on scroll */
+  color: white;
+  padding: 80px;
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #343a40;
+  color: white;
+  padding: 15px 20px; /* Adjusted padding */
+  position: fixed; /* Keep header fixed at the top */
+  width: 100%; /* Ensure it spans the full width */
+  top: 0; /* Align it to the top */
+  z-index: 1000; /* Ensure it stays above other content */
+}
+
+.header .button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.menu-button, .logout-button, .show-profile-button, .view-cart-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.menu-button:hover, .logout-button:hover, .show-profile-button:hover, .view-cart-button:hover {
+  background-color: #0056b3;
+}
+
+.logo {
+  height: 40px; /* Reduced size */
+  width: auto;
+}
+
+/* Adjustments to ensure space between header and cards */
+.manage-users-container {
+  margin-top: 80px; /* Add space below the header */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.order-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-5px);
+}
+
+.order-header {
+  display: flex;
+  align-items: center;
+}
+
+.order-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 15px;
+}
+
+.order-info {
+  flex: 1;
+}
+
+.order-info p {
+  margin: 0;
+  padding: 5px 0;
+  color: black;
+}
+
+.order-info p strong {
+  display: inline-block;
+  width: 150px;
+}
+
+.order-status-pending {
+  color: red;
+}
+
+.order-status-confirmed {
+  color: green;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .order-card {
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  .order-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .order-info p strong {
+    width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .order-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .order-info p strong {
+    width: 100px;
+  }
+}
+
+.home-icon-container {
+  position: fixed; /* Ensures it stays at the top-right corner */
+  top: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+  font-size: 24px; /* Adjust size if needed */
+  cursor: pointer; /* Pointer cursor to indicate clickable */
+  background-color: #fff; /* Background color for better visibility */
+  padding: 10px; /* Space around the icon */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+  transition: background-color 0.3s, color 0.3s; /* Smooth color transition */
+}
+
+.home-icon-container i {
+  color: #007bff; /* Primary color (adjust as needed) */
+}
+
+.home-icon-container:hover {
+  background-color: #f8f9fa; /* Light background on hover */
+}
+
+.home-icon-container:hover i {
+  color: #0056b3; /* Darker color on hover */
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1050; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal.show {
+  display: block; /* Show the modal */
+}
+
+.modal-dialog {
+  position: relative;
+  margin: 10% auto; /* Adjust margin to center vertically */
+  max-width: 500px; /* Set max width */
+}
+
+.modal-content {
+  background-color: #fff; /* White background for the content */
+  border-radius: 0.3rem; /* Optional: rounded corners */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: shadow for depth */
+}
+
+.modal-header, .modal-footer {
+  border-bottom: 1px solid #dee2e6; /* Border for header and footer */
+}
+
+.close {
+  cursor: pointer; /* Change cursor to pointer for close button */
+}

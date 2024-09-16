@@ -1,0 +1,75 @@
+<div class="navbar">
+  <div class="navbar-left">
+    <button class="menu-icon" (click)="toggleMenu()"> <i class="fas fa-bars"></i></button>
+    <div class="dropdown-menu" *ngIf="menuVisible">
+      <a href="/manageitems">Manage Items</a>
+      <a href="/manageusers">Manage Users</a>
+      <a href="/feedbacks">Feedbacks</a>
+    </div>
+  </div>
+  <div class="navbar-center">
+    <img src="/assets/images/logo.JPG" alt="Logo" class="logo" />
+  </div>
+  <div class="navbar-right">
+    <a href="/admindash" class="icon home-icon"><i class="fas fa-home"></i></a>
+    <a class="icon logout-icon" (click)="openLogoutModal()">
+      <i class="fas fa-sign-out-alt"></i> <!-- Logout icon -->
+    </a>
+  </div>
+</div>
+
+<div class="mar">
+  <!-- Existing order confirmation content -->
+</div>
+
+<div class="mar">
+<div class="orders-container">
+  <h2>All Orders</h2>
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="error">{{ error }}</div>
+  <div *ngIf="!loading && orders.length > 0">
+    <div class="order-card-container">
+      <div *ngFor="let order of orders" class="order-card">
+        <div class="order-header">
+          <div *ngFor="let item of order.orderItems" class="order-item">
+            <img [src]="item.imgUrl || 'default-image-url.jpg'" alt="{{ item.name }}" class="order-image" />
+            <div class="order-info">
+              <p><strong>Item Name:</strong> {{ item.name }}</p>
+              <p><strong>Order Number:</strong> {{ order.orderNumber }}</p>
+              <p><strong>Total Price:</strong> ${{ order.totalPrice }}</p>
+              <p><strong>Order Time:</strong> {{ order.orderTime | date: 'short' }}</p>
+              <p><strong>Status:</strong> 
+                <span [ngClass]="{
+                  'order-status-pending': order.status === 'Pending',
+                  'order-status-confirmed': order.status === 'Confirmed'
+                }">{{ order.status }}</span>
+              </p>
+              <button (click)="updateOrderStatus(order.id, 'Confirmed')">Confirm</button>
+              <button (click)="updateOrderStatus(order.id, 'Declined')">Decline</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noOrders>
+    <p>No orders found.</p>
+  </ng-template>
+</div>
+</div>
+<div class="modal" *ngIf="showLogoutModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Logout Confirmation</h2>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to log out?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" (click)="confirmLogout()">Yes</button>
+        <button class="btn btn-secondary" (click)="closeLogoutModal()">No</button>
+      </div>
+    </div>
+  </div>
+</div>

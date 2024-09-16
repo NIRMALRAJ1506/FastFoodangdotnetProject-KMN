@@ -1,0 +1,270 @@
+/* Header Styles */
+.mar {
+  background: url('/assets/images/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+  position: fixed; /* Fix header to top */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure it sits on top of other elements */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.header .logo {
+  height: 50px;
+}
+
+.header .button-group {
+  display: flex;
+  gap: 15px;
+}
+
+.header .button-group button {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.header .button-group button:hover {
+  background-color: #0056b3;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+  position: fixed;
+  top: 60px; /* Adjust based on header height */
+  left: -250px;
+  width: 250px;
+  height: calc(100% - 60px); /* Adjust based on header height */
+  background-color: #222;
+  padding-top: 20px;
+  transition: left 0.3s ease;
+  z-index: 1000; /* Ensure it sits on top of content */
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar nav {
+  padding: 15px;
+}
+
+.sidebar nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar nav ul li {
+  padding: 10px 0;
+}
+
+.sidebar nav ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #ddd;
+  display: block;
+}
+
+.sidebar nav ul li a:hover {
+  background-color: #007bff;
+  color: #fff;
+  padding-left: 10px;
+  transition: 0.2s;
+}
+
+/* Menu Button */
+.menu-button {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.menu-button:hover {
+  background-color: #0056b3;
+}
+
+/* Main Content Styles */
+.main-content {
+  margin-left: 250px; /* Adjust based on sidebar width */
+  padding: 20px;
+  margin-top: 60px; /* Adjust based on header height */
+}
+
+/* Cart Container Styles */
+.cart-container {
+  padding: 20px;
+  background-color: #f8f9fa; /* Light background for the cart */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a lifted effect */
+  background: url('/assets/images/background.jpg') center center no-repeat;
+  background-size: cover; /* Cover the entire container */
+  min-height: 100vh; /* Ensure it covers at least the viewport height */
+  background-attachment: fixed; /* Keep background fixed on scroll */
+  color: white;
+}
+
+.cart-container h2 {
+  font-size: 1.5rem;
+  color: #333; /* Dark text for the heading */
+  margin-bottom: 20px;
+}
+
+.cart-container p {
+  font-size: 1rem;
+  color: #6c757d; /* Gray text for empty cart message */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: white;
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6; /* Border between rows */
+}
+
+table th {
+  background-color: #e9ecef; /* Light gray background for header */
+  font-weight: bold;
+  color: black;
+}
+
+.cart-image {
+  width: 100px; /* Fixed width for cart images */
+  height: 100px;
+  object-fit: cover; /* Ensure the image covers the area */
+  border-radius: 4px;
+}
+
+.cart-summary {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-summary h3 {
+  font-size: 1.25rem;
+  color: #333;
+  margin: 0;
+}
+
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff; /* Default button color */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker color for button hover */
+}
+
+button.remove {
+  background-color: #dc3545; /* Red for remove button */
+}
+
+button.remove:hover {
+  background-color: #c82333; /* Darker red for remove button hover */
+}
+
+button.checkout {
+  background-color: #28a745; /* Green for checkout button */
+}
+
+button.checkout:hover {
+  background-color: #218838; /* Darker green for checkout button hover */
+}
+
+/* Adjustments for mobile screens */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 0; /* Adjust for mobile screens */
+  }
+
+  .sidebar nav ul li {
+    text-align: center;
+  }
+
+  .profile-box {
+    width: 90%;
+  }
+}
+
+/* Modal Styles */
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1050; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal.show {
+  display: block; /* Show the modal */
+}
+
+.modal-dialog {
+  position: relative;
+  margin: 10% auto; /* Adjust margin to center vertically */
+  max-width: 500px; /* Set max width */
+}
+
+.modal-content {
+  background-color: #fff; /* White background for the content */
+  border-radius: 0.3rem; /* Optional: rounded corners */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: shadow for depth */
+}
+
+.modal-header, .modal-footer {
+  border-bottom: 1px solid #dee2e6; /* Border for header and footer */
+}
+
+.close {
+  cursor: pointer; /* Change cursor to pointer for close button */
+}
