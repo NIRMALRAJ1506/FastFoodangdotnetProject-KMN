@@ -171,5 +171,41 @@ namespace FastFoodApi.Controllers
             }
             return Ok(new { role = user.Role });
         }
+
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordModel model)
+        {
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.Email == model.Email && u.Role == "User");
+            if (user == null)
+            {
+                return NotFound("User with this email does not exist.");
+            }
+
+            // Generate reset token
+            var token = Guid.NewGuid().ToString();
+
+            // Store the token and send via email
+            // await _emailService.SendPasswordResetEmail(user.Email, token);
+
+            return Ok(new { message = "Password reset link has been sent to your email." });
+        }
+
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordModel model)
+        {
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.Email == model.Email && u.Role == "User");
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            // Update the password
+            user.Password = model.NewPassword;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Password reset successful." });
+        }
+
     }
 }

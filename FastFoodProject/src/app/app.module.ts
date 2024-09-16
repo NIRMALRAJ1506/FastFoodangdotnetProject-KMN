@@ -38,6 +38,7 @@ import { FeedbacksComponent } from './Components/feedbacks/feedbacks.component';
 import { CaroselComponent } from './Components/carosel/carosel.component';
 import { MenuComponent } from './Components/menu/menu.component';
 import { PaymentComponent } from './Components/payment/payment.component';
+import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { PaymentComponent } from './Components/payment/payment.component';
     FeedbacksComponent,
     CaroselComponent,
     MenuComponent,
-    PaymentComponent
+    PaymentComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

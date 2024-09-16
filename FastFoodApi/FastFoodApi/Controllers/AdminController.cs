@@ -62,5 +62,45 @@ namespace FastFoodApi.Controllers
 
             return Ok(new { message = "Admin login successful", token, userId = admin.Id });
         }
+
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordModel model)
+        {
+            var admin = await _context.Users.SingleOrDefaultAsync(u => u.Email == model.Email && u.Role == "Admin");
+            if (admin == null)
+            {
+                return NotFound("Admin with this email does not exist.");
+            }
+
+            // Generate reset token (in a real app, use a more secure method)
+            var token = Guid.NewGuid().ToString();
+
+            // Store the token (you can store it in a table or in-memory store)
+            // Send token via email (Implement this as per your project)
+            // await _emailService.SendPasswordResetEmail(admin.Email, token);
+
+            return Ok(new { message = "Password reset link has been sent to your email." });
+        }
+
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordModel model)
+        {
+            // Validate the token (in a real app, retrieve the token and verify)
+            // Assume we have the token validation process
+
+            var admin = await _context.Users.SingleOrDefaultAsync(u => u.Email == model.Email && u.Role == "Admin");
+            if (admin == null)
+            {
+                return NotFound("Admin not found.");
+            }
+
+            // Update the password (you should hash the password in a real app)
+            admin.Password = model.NewPassword;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Password reset successful." });
+        }
+
     }
 }
