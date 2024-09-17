@@ -243,6 +243,22 @@
   },
   {
     "ContainingType": "FastFoodApi.Controllers.OrderController",
+    "Method": "DeleteOrder",
+    "RelativePath": "api/Order/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FastFoodApi.Controllers.OrderController",
     "Method": "GetOrderCount",
     "RelativePath": "api/Order/count",
     "HttpMethod": "GET",

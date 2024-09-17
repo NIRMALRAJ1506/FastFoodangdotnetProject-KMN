@@ -33,7 +33,7 @@
 .mar {
   background: url('/assets/images/background.jpg') no-repeat center center fixed;
   background-size: cover;
-  height: 100vh;/* Ensure background covers full height minus navbar height */
+  height: 100vh; /* Ensure background covers full height minus navbar height */
   padding-top: 60px; /* Ensure padding-top matches navbar height to avoid overlap */
   display: flex;
   flex-direction: column;
@@ -172,4 +172,69 @@
 
 .btn-secondary:hover {
   background-color: #5a6268;
+}
+
+/* Responsive Styles */
+
+/* Mobile screens (up to 600px) */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 5px;
+  }
+
+  .navbar-left, .navbar-right {
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .navbar-center {
+    position: static;
+    transform: none;
+    margin: 10px 0;
+  }
+
+  .menu-icon {
+    font-size: 20px;
+  }
+
+  .dropdown-menu {
+    position: static;
+    top: auto;
+    left: auto;
+    background-color: #444;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .contact-us-container,
+  .feedback-table-container {
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  .feedback-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .feedback-table th, .feedback-table td {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .modal-dialog {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
 }

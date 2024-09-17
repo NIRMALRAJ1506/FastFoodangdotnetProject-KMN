@@ -72,22 +72,22 @@
   </div>
 
   <!-- Logout Confirmation Modal -->
-<!-- Logout Confirmation Modal -->
-<div class="modal" [ngClass]="{'show': showLogoutModal}" (click)="closeLogoutModal()">
-  <div class="modal-dialog" (click)="$event.stopPropagation()">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title">Confrim Logout</h2>
-        <button class="close" (click)="closeLogoutModal()">
-          <span>&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure you want to log out?</p>
-      </div>
-      <div class="modal-footer">
-        <button class="btn-primary" (click)="confirmLogout()">Yes</button>
-        <button class="btn-secondary" (click)="closeLogoutModal()">No</button>
+  <div class="modal" [ngClass]="{'show': showLogoutModal}" (click)="closeLogoutModal()">
+    <div class="modal-dialog" (click)="$event.stopPropagation()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Confirm Logout</h2>
+          <button class="close" (click)="closeLogoutModal()">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to log out?</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-primary" (click)="confirmLogout()">Yes</button>
+          <button class="btn-secondary" (click)="closeLogoutModal()">No</button>
+        </div>
       </div>
     </div>
   </div>
